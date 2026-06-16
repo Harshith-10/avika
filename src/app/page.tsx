@@ -1,4 +1,5 @@
 import CTASection from "@/components/blocks/cta-section";
+import { Footer } from "@/components/blocks/footer";
 import HeroSection from "@/components/blocks/hero-section";
 import Navbar from "@/components/blocks/navbar";
 import OffersSection from "@/components/blocks/offers-section";
@@ -14,7 +15,9 @@ export default function Home() {
           <HeroSection />
           <OffersSection />
           <CTASection />
-          <div className="h-20" />
+        </div>
+        <div className="border-l border-r">
+          <Footer />
         </div>
       </div>
     </ScrollArea>

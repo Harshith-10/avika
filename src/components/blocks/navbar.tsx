@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <Sunrise className="w-8 h-8" />
           <div className="text-xl font-bold">AVIKA</div>
-          <div className="flex rounded-full bg-muted/80 p-2 ml-4">
+          <div className="flex rounded-full bg-muted/80 py-2 px-4 ml-4">
             <Button variant="ghost" size="sm" asChild>
               <Link href="/">Home</Link>
             </Button>

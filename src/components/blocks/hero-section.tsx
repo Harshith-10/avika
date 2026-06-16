@@ -34,19 +34,19 @@ export default function HeroSection() {
         <div className="border-b aspect-[1.25]">
           <FluidGlyph />
         </div>
-        <div className="flex items-center text-2xl p-12 border-r">
+        <div className="flex items-center text-2xl p-12 border-r bg-muted/20">
           You're in a private and safe space.
         </div>
-        <div className="flex items-center justify-center gap-12 text-sm p-12">
-          <p className="flex items-center gap-2 py-2 px-4 rounded-full bg-muted/50 border">
+        <div className="flex items-center justify-center gap-12 text-sm p-12 bg-muted/30">
+          <p className="flex items-center gap-2 py-2 px-4 rounded-full bg-muted/70 border">
             <Users className="w-4 h-4" />
             <span>Qualified Therapists</span>
           </p>
-          <p className="flex items-center gap-2 py-2 px-4 rounded-full bg-muted/50 border">
+          <p className="flex items-center gap-2 py-2 px-4 rounded-full bg-muted/70 border">
             <Shield className="w-4 h-4" />
             <span>100% Confidential</span>
           </p>
-          <p className="flex items-center gap-2 py-2 px-4 rounded-full bg-muted/50 border">
+          <p className="flex items-center gap-2 py-2 px-4 rounded-full bg-muted/70 border">
             <Clock className="w-4 h-4" />
             <span>Stop Anytime</span>
           </p>

@@ -15,7 +15,7 @@ export default function CTASection() {
   return (
     <section className="relative w-full border-b">
       <div className="grid grid-cols-7 w-full">
-        <div className="col-span-3 flex flex-col items-start justify-center p-18 border-r">
+        <div className="col-span-3 flex flex-col items-start justify-center p-18 border-r bg-muted/30">
           <Image
             src="https://avika.ai/assets/struggling-illustration-C_ENTxCZ.svg"
             alt="CTA Image"

@@ -1,5 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { Footer } from "@/components/blocks/footer";
 import Navbar from "@/components/blocks/navbar";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,9 +14,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { LinkIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function AboutPage() {
   return (
@@ -21,7 +22,7 @@ export default function AboutPage() {
         {/* Remove the Navbar if it is already included in your layout.tsx */}
         <Navbar />
 
-        <main className="flex-grow pt-24 pb-16">
+        <main className="flex-grow pt-20 border-b">
           {/* Hero Section */}
           <section className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl text-center space-y-6 py-12 md:py-20">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
@@ -119,6 +120,7 @@ export default function AboutPage() {
             </div>
           </section>
         </main>
+        <Footer />
       </div>
     </ScrollArea>
   );
@@ -186,10 +188,14 @@ function TeamMemberCard({
       </CardHeader>
       {link && (
         <CardFooter className="flex justify-center">
-          <Button variant="outline" size="sm" asChild>
-            <Link href={link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-              <LinkIcon className="w-4 h-4" />
-              LinkedIn
+          <Button variant="outline" size="icon-md" asChild>
+            <Link
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2"
+            >
+              <FaLinkedinIn className="w-4 h-4" />
             </Link>
           </Button>
         </CardFooter>
