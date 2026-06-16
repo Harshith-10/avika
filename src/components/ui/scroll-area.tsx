@@ -4,7 +4,9 @@ import {
   ScrollArea as ArkScrollArea,
   useScrollAreaContext,
 } from "@ark-ui/react/scroll-area";
-import type React from "react";
+import Lenis from "lenis"; // Import Lenis directly
+import type React from "react"; // Added useEffect and useRef
+import { useEffect, useRef } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
@@ -42,17 +44,51 @@ interface ScrollAreaProps
 export const ScrollArea = (props: ScrollAreaProps) => {
   const { scrollFade = false, className, children, ...rest } = props;
 
+  // 1. Create references for the scrollable viewport and its content
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // 2. Initialize Lenis inside a useEffect hook
+  useEffect(() => {
+    if (!viewportRef.current || !contentRef.current) return;
+
+    // Attach Lenis exclusively to this custom scroll container
+    const lenis = new Lenis({
+      wrapper: viewportRef.current,
+      content: contentRef.current,
+      lerp: 0.1, // Controls the smoothness (lower = smoother/slower)
+      wheelMultiplier: 1, // Controls the scroll speed
+      smoothWheel: true,
+    });
+
+    // 3. Set up the RequestAnimationFrame loop required by Lenis
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+    rafId = requestAnimationFrame(raf);
+
+    // 4. Cleanup the loop and instance on unmount
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <ArkScrollArea.Root
       className={cn("size-full min-h-0 [--fade-size:1.5rem]", className)}
       data-slot="scroll-area"
       {...rest}
     >
+      {/* 5. Pass the refs directly to the Ark UI elements */}
       <ArkScrollArea.Viewport
+        ref={viewportRef}
         className={cn(scrollAreaVariants({ scrollFade }))}
         data-slot="scroll-area-viewport"
       >
-        <ArkScrollArea.Content data-slot="scroll-area-content">
+        <ArkScrollArea.Content ref={contentRef} data-slot="scroll-area-content">
           {children}
         </ArkScrollArea.Content>
       </ArkScrollArea.Viewport>
