@@ -14,8 +14,8 @@ import CornerBoxes from "./corner-boxes";
 export default function CTASection() {
   return (
     <section className="relative w-full border-b">
-      <div className="grid grid-cols-2 w-full">
-        <div className="flex flex-col items-start justify-center p-18 border-r">
+      <div className="grid grid-cols-7 w-full">
+        <div className="col-span-3 flex flex-col items-start justify-center p-18 border-r">
           <Image
             src="https://avika.ai/assets/struggling-illustration-C_ENTxCZ.svg"
             alt="CTA Image"
@@ -25,7 +25,7 @@ export default function CTASection() {
             loading="lazy"
           />
         </div>
-        <div className="flex flex-col items-start justify-center gap-8 p-18">
+        <div className="col-span-4 flex flex-col items-start justify-center gap-8 p-18">
           <h2 className="text-4xl font-medium">
             What you may already be struggling with
           </h2>

@@ -6,7 +6,7 @@ import ThemeToggle from "./theme-toggle";
 
 export default function Navbar() {
   return (
-    <div className="absolute top-0 left-0 w-full z-10 px-16">
+    <div className="absolute top-0 left-0 w-full z-20 px-16">
       <div className="relative flex items-center justify-between py-4 px-6 h-20 w-full backdrop-blur-md bg-background/50 border-l border-r border-b">
         <div className="flex items-center gap-4">
           <Sunrise className="w-8 h-8" />
@@ -24,7 +24,7 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <ThemeToggle />
+          <ThemeToggle size="xl" />
         </div>
         <CornerBoxes />
       </div>

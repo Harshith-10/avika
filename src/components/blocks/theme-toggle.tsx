@@ -25,7 +25,7 @@ export default function ThemeToggle({
   }, []);
 
   if (!mounted) {
-    return <Skeleton className="w-24 h-8 rounded-md" />;
+    return <Skeleton className={`h-10 rounded-md ${showText ? "w-36" : "w-10"}`} />;
   }
 
   return (
