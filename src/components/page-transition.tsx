@@ -120,7 +120,7 @@ export default function PageTransition({
   const pathname = usePathname();
 
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       <motion.div
         key={pathname}
         variants={getVariants(type, direction)}

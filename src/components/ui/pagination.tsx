@@ -88,6 +88,7 @@ export const PaginationItems = (
             {page.value}
           </PaginationItem>
         ) : (
+          // biome-ignore lint/suspicious/noArrayIndexKey: Just ignore this bro
           <PaginationEllipsis index={index} key={`ellipsis-${index}`} />
         ),
       )

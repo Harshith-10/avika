@@ -1,30 +1,22 @@
-import { ArrowRight, CircleHelp } from "lucide-react";
-import Link from "next/link";
-import ThemeToggle from "@/components/blocks/theme-toggle";
-import { Button } from "@/components/ui/button";
+import CTASection from "@/components/blocks/cta-section";
+import HeroSection from "@/components/blocks/hero-section";
+import Navbar from "@/components/blocks/navbar";
+import OffersSection from "@/components/blocks/offers-section";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Home() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="absolute top-4 right-4">
-        <ThemeToggle pill size="lg" />
-      </div>
-      <div className="flex flex-col items-center gap-4">
-        <h1 className="text-4xl font-bold">Welcome to Avika Mind Hub</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
-          Where Technology Meets Therapy
-        </p>
-        <div className="flex items-center gap-2">
-          <Button variant="outline" size="lg">
-            Learn More <CircleHelp />
-          </Button>
-          <Button size="lg" asChild>
-            <Link href="/about">
-              Get Started <ArrowRight />
-            </Link>
-          </Button>
+    <ScrollArea className="h-screen w-screen">
+      <Navbar />
+      <div className="px-16">
+        <div className="flex flex-col items-center justify-center w-full border-r border-l">
+          <div className="h-20" />
+          <HeroSection />
+          <OffersSection />
+          <CTASection />
+          <div className="h-20" />
         </div>
       </div>
-    </div>
+    </ScrollArea>
   );
 }
