@@ -4,8 +4,8 @@ import {
   ScrollArea as ArkScrollArea,
   useScrollAreaContext,
 } from "@ark-ui/react/scroll-area";
-import Lenis from "lenis"; // Import Lenis directly
-import type React from "react"; // Added useEffect and useRef
+import Lenis from "lenis";
+import type React from "react";
 import { useEffect, useRef } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";

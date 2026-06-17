@@ -18,7 +18,7 @@ export default function HeroSection() {
           </p>
           <div className="flex gap-4">
             <Button variant="default" size="xl" asChild>
-              <Link href="/about">
+              <Link href="/experience">
                 Get Started
                 <ArrowRight />
               </Link>
@@ -31,7 +31,7 @@ export default function HeroSection() {
             </Button>
           </div>
         </div>
-        <div className="border-b aspect-[1.25]">
+        <div className="border-b aspect-[1.15]">
           <FluidGlyph />
         </div>
         <div className="flex items-center text-2xl p-12 border-r bg-muted/20">

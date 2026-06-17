@@ -48,7 +48,7 @@ function OfferCard({
   imageUrl: string;
 }) {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all">
       <CardMedia className="h-48 bg-muted" variant="image">
         <Image src={imageUrl} alt="Image" width={600} height={400} />
       </CardMedia>

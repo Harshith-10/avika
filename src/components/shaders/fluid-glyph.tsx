@@ -33,6 +33,23 @@ const float kBayer[16] = float[16](
     15.0,  7.0, 13.0,  5.0
 );
 
+  vec3 radialPalette(float t) {
+    vec3 pink = vec3(1.0, 0.35, 0.72);
+    vec3 blue = vec3(0.28, 0.58, 1.0);
+    vec3 green = vec3(0.2, 0.85, 0.45);
+    vec3 orange = vec3(1.0, 0.63, 0.22);
+
+    t = fract(t);
+
+    if (t < 0.3333333) {
+      return mix(pink, blue, t / 0.3333333);
+    }
+    if (t < 0.6666667) {
+      return mix(blue, green, (t - 0.3333333) / 0.3333334);
+    }
+    return mix(green, orange, (t - 0.6666667) / 0.3333333);
+  }
+
 float box(vec2 p, vec2 c, vec2 h) {
     vec2 q = abs(p - c) - h;
     return (1.0 - step(0.0, q.x)) * (1.0 - step(0.0, q.y));
@@ -120,8 +137,12 @@ void main() {
     );
 
     float mask = synthesizeCharacter(localUV, adjustedLuminance);
+
+    float colorPhase = r * mix(0.9, 1.4, uVariant) - iTime * mix(0.08, 0.16, uVariant);
+    vec3 waveColor = radialPalette(colorPhase);
     
-    vec3 themedColor = mix(uBgColor, uFgColor, mask);
+    vec3 glyphColor = mix(uFgColor, waveColor, mask);
+    vec3 themedColor = mix(uBgColor, glyphColor, mask);
     vec3 finalColor = mix(themedColor, uGlyphColor, uTransparent);
     float alpha = mix(1.0, mask, uTransparent);
 
@@ -274,6 +295,24 @@ export default function FluidGlyph({ showControls = false }: FluidGlyphProps) {
       updateColors();
     };
 
+    const themeRoot = document.documentElement;
+    const themeObserver = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
+          updateColors();
+          break;
+        }
+      }
+    });
+
+    themeObserver.observe(themeRoot, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     window.addEventListener("resize", resize);
     resize();
 
@@ -334,6 +373,7 @@ export default function FluidGlyph({ showControls = false }: FluidGlyphProps) {
     requestRef.current = requestAnimationFrame(render);
 
     return () => {
+      themeObserver.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouseMove);
       if (requestRef.current) cancelAnimationFrame(requestRef.current);

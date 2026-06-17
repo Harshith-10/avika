@@ -10,13 +10,13 @@ import { Button } from "../ui/button";
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white px-6 py-16 font-sans">
-      <div className="max-w-7xl mx-auto bg-muted p-12 rounded-3xl border border-zinc-800">
+    <footer className="bg-background px-6 py-16 font-sans">
+      <div className="max-w-7xl mx-auto bg-card p-12 rounded-3xl shadow-xl border">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-24">
           {/* Brand */}
           <div className="flex flex-col items-start lg:col-span-1">
             <div className="flex items-center gap-5">
-              <div className="bg-white text-black p-2 rounded-full h-[52px] w-[52px] flex items-center justify-center shrink-0">
+              <div className="bg-muted p-2 rounded-full h-[52px] w-[52px] flex items-center justify-center shrink-0">
                 <Sunrise className="h-8 w-8" strokeWidth={1.5} />
               </div>
               <div className="flex flex-col gap-2">
@@ -151,9 +151,9 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="E-MAIL"
-                className="w-full bg-black border text-white rounded-full py-3.5 pl-6 pr-40 focus:outline-none focus:border-zinc-500 transition-colors text-sm tracking-[0.15em] placeholder:text-zinc-600"
+                className="w-full bg-input border rounded-full py-3.5 pl-6 pr-40 focus:outline-none focus:border-zinc-500 transition-colors text-sm placeholder:text-muted-foreground"
               />
-              <Button className="absolute py-4.5 right-1.5 top-1.5 bottom-1.5 bg-white text-black px-6 rounded-full text-[11px] font-bold tracking-[0.15em] hover:bg-zinc-200 transition-colors">
+              <Button className="absolute py-4.5 right-1.5 top-1.5 bottom-1.5 px-6 rounded-full text-[11px] font-bold transition-colors">
                 GET UPDATES
               </Button>
             </div>
